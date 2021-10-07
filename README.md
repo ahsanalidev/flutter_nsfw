@@ -22,7 +22,7 @@ buffer.asUint8List(data.offsetInBytes, data.lengthInBytes));
 await  FlutterNsfw.initNsfw(file.path);
 ```
 
-5 - get photo NSFW probability
+- 5 - get photo NSFW probability
   
 
 ```
@@ -30,7 +30,7 @@ await  FlutterNsfw.initNsfw(file.path);
 ```
 
   
-6 - Get video NSFW probability by providing video path and NSFW threshold above which to classify video as nsfw you may choose to enter optional parameters too. 
+- 6 - Get video NSFW probability by providing video path and NSFW threshold above which to classify video as nsfw you may choose to enter optional parameters too. 
   
 
 ```
