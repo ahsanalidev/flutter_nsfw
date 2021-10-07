@@ -6,9 +6,9 @@
   
 
 - 1- [Download](https://github.com/devzwy/open_nsfw_android/blob/dev/app/src/main/assets/nsfw.tflite), tflite modle and put it in assets folder
-2 - Add the path of the tfliet to pubspec.yaml
-3 - Read the file using path_provider plugin
-4 -  Initialize the plugin before use as 
+- 2 - Add the path of the tfliet to pubspec.yaml
+- 3 - Read the file using path_provider plugin
+- 4 -  Initialize the plugin before use as 
 ```
 Directory  appDocDir = await  getApplicationDocumentsDirectory();
 String  appDocPath = appDocDir.path;
