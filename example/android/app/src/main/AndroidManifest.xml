@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dev.ahsanaliflutter.flutter_nsfw_example">
+    package="com.niyangup.flutter_nsfw_example">
    <application
         android:label="flutter_nsfw_example"
         android:icon="@mipmap/ic_launcher">
