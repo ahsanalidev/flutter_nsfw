@@ -1,4 +1,4 @@
-package com.niyangup.flutter_nsfw_example
+package com.niyangup.example
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,6 +1,6 @@
 name: flutter_nsfw
 description: flutter plugin for detecting NSFW content from images and videos.
-version: 0.0.1
+version: 0.0.5
 homepage: https://github.com/ahsanalidev/flutter_nsfw
 repository: https://github.com/ahsanalidev/flutter_nsfw
 
