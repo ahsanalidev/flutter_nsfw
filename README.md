@@ -3,6 +3,7 @@
 
  [![](https://img.shields.io/badge/Base-TensorFlow-brightgreen.svg)](https://github.com/ahsanalidev/flutter_nsfw) 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-orange.svg)](https://opensource.org/licenses/BSD-3-Clause)
+
   
 
 - 1- [Download](https://github.com/devzwy/open_nsfw_android/blob/dev/app/src/main/assets/nsfw.tflite), tflite model and put it in the assets folder
@@ -107,5 +108,6 @@ class NSFWDetector {
 
 
 If you find that the model is increasing your App Size you can also host your model Firebase ML kit
+If you are using running the example app on emulator so it might not work because of GPU constraints please use a real device.
   
 
