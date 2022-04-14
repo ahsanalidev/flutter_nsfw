@@ -107,7 +107,7 @@ class NSFWDetector {
 ```
 
 
-If you find that the model is increasing your App Size you can also host your model Firebase ML kit and download it using [FirebaseMLModelDownloader](https://pub.dev/packages/firebase_ml_model_downloader)
-If you are using running the example app on emulator so it might not work because of GPU constraints please use a real device.
+- If you find that the model is increasing your App Size you can also host your model Firebase ML kit and download it using [FirebaseMLModelDownloader](https://pub.dev/packages/firebase_ml_model_downloader)
+- If you are running the example app on emulator so it might not work because of GPU constraints please use a real device when checking on Android.
   
 
