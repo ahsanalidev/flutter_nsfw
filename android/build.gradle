@@ -51,8 +51,8 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.github.iammert:Frames:0.3'
     api 'org.tensorflow:tensorflow-lite:2.1.0'
     api 'org.tensorflow:tensorflow-lite-gpu:2.1.0'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
+    implementation 'com.github.iammert:Frames:0.3'
 }
