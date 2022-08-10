@@ -1,6 +1,7 @@
 package dev.ahsanaliflutter.flutter_nsfw
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
 import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -37,6 +38,9 @@ class FlutterNsfwPlugin: FlutterPlugin, MethodCallHandler {
       "initNsfw" -> {
         handleInitNsfw(call, result)
       }
+      "getBitmapNSFWScore" -> {
+        handlegetBitmapNSFWScore(call, result)
+      }
       "getPhotoNSFWScore" -> {
         handlegetPhotoNSFWScore(call, result)
       }
@@ -46,6 +50,22 @@ class FlutterNsfwPlugin: FlutterPlugin, MethodCallHandler {
       else -> {
         result.notImplemented()
       }
+    }
+  }
+
+  private fun handlegetBitmapNSFWScore(call: MethodCall, result: MethodChannel.Result) {
+    val imageData: ByteArray? = call.argument<ByteArray>("imageData");
+    if (imageData != null) {
+      val bitmap: Bitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.size);
+      Log.d("TAG", "dsagdsfgsdfg")
+      NSFWHelper.getNSFWScore(bitmap) {
+        val data = "nsfw:${it.nsfwScore}\nsfw:${it.sfwScore}\nScanning time：${it.timeConsumingToScanData} ms"
+        Log.d("TAG", "handleNSFW: $data")
+
+        result.success(it.nsfwScore)
+      }
+    } else {
+      result.success(0.0)
     }
   }
 
@@ -62,7 +82,6 @@ class FlutterNsfwPlugin: FlutterPlugin, MethodCallHandler {
     } else {
       result.success(0.0)
     }
-
   }
 
   /**

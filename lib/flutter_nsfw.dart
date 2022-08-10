@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 
@@ -21,12 +22,24 @@ class FlutterNsfw {
     bool isOpenGPU = true,
     int numThreads = 4,
   }) async {
-    await _channel.invokeMethod('initNsfw', {
-      "modelPath": modelPath,
-      "enableLog": enableLog,
-      "isOpenGPU": isOpenGPU,
-      "numThreads": numThreads,
+    if (Platform.isAndroid && modelPath.isNotEmpty) {
+      await _channel.invokeMethod('initNsfw', {
+        "modelPath": modelPath,
+        "enableLog": enableLog,
+        "isOpenGPU": isOpenGPU,
+        "numThreads": numThreads,
+      });
+    }
+  }
+
+  ///Call to get the result
+  ///
+  /// [imageData] Image data bytes array
+  static Future<dynamic> getBitmapNSFWScore(List<int> imageData) async {
+    final result = await _channel.invokeMethod('getBitmapNSFWScore', {
+      "imageData": imageData,
     });
+    return result;
   }
 
   ///Call to get the result
