@@ -46,30 +46,31 @@ public class SwiftFlutterNsfwPlugin: NSObject, FlutterPlugin {
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     do{
         switch call.method {
-        case "getPhotoNSFWScore":
-            guard let arguments = call.arguments as? [AnyHashable: Any] else { return }
-                 guard let imagePath = arguments["filePath"] as? String else {
-                     return
-                 }
-            guard let image:UIImage = UIImage(named: imagePath) else {
-                return
-            }
-            handleGetPhotoNSFWScore(image: image).done{ nsfwResult in
-                result(nsfwResult)
-            }
-
-    
-        case "detectNSFWVideo":
-            guard let arguments = call.arguments as? [AnyHashable: Any] else { return }
-            guard let videoPath = arguments["videoPath"] as? String else {
-                     return
-                 }
-            guard  let nsfwThresh = arguments["nsfwThreshold"] as? Double else {
-                    return
+            case "getBitmapNSFWScore":
+                guard let arguments = call.arguments as? [AnyHashable: Any] else { return }
+                guard let imageData = arguments["imageData"] as? FlutterStandardTypedData else { return }
+                guard let image:UIImage = UIImage(data: imageData.data) else { return }
+                handleGetPhotoNSFWScore(image: image).done{ nsfwResult in
+                    result(nsfwResult)
                 }
-            handleDetectNSFWVideo(videoPath:videoPath,nsfwThresh:nsfwThresh,completion: result)
-        default:
-            throw FlutterNSFWError.unknownMethod
+
+            case "getPhotoNSFWScore":
+                guard let arguments = call.arguments as? [AnyHashable: Any] else { return }
+                guard let imagePath = arguments["filePath"] as? String else { return }
+                guard let image:UIImage = UIImage(named: imagePath) else { return }
+                handleGetPhotoNSFWScore(image: image).done{ nsfwResult in
+                    result(nsfwResult)
+                }
+
+        
+            case "detectNSFWVideo":
+                guard let arguments = call.arguments as? [AnyHashable: Any] else { return }
+                guard let videoPath = arguments["videoPath"] as? String else { return }
+                guard let nsfwThresh = arguments["nsfwThreshold"] as? Double else { return }
+                handleDetectNSFWVideo(videoPath: videoPath, nsfwThresh: nsfwThresh, completion: result)
+            
+            default:
+                throw FlutterNSFWError.unknownMethod
         }
     } catch {
         print("FlutterNSFWError bridge error: \(error)")
